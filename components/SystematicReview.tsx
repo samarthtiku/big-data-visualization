@@ -3,14 +3,13 @@ import {
   ChevronDown,
   ChevronUp,
   BookOpen,
+  Search,
   AlertCircle,
   BarChart2,
   Book,
-  Users,
-  Target,
   Archive,
   Settings,
-  FileText
+  FileText,
 } from 'lucide-react';
 import {
   LineChart,
@@ -24,11 +23,12 @@ import {
   Bar,
   PieChart,
   Pie,
-  Cell
+  Cell,
 } from 'recharts';
 
 const COLORS = ['#0088FE', '#00C49F', '#FFBB28', '#FF8042', '#8884d8', '#82ca9d'];
 
+// Data for visualizations
 const paperData = {
   yearlyDistribution: [
     { year: 2010, papers: 2 },
@@ -38,13 +38,13 @@ const paperData = {
     { year: 2014, papers: 10 },
     { year: 2015, papers: 8 },
     { year: 2016, papers: 6 },
-    { year: 2017, papers: 2 }
+    { year: 2017, papers: 2 },
   ],
   qualityScores: [
     { category: 'Reporting', score: 2.51 },
     { category: 'Rigor', score: 1.33 },
     { category: 'Credibility', score: 1.02 },
-    { category: 'Relevance', score: 1.57 }
+    { category: 'Relevance', score: 1.57 },
   ],
   domainDistribution: [
     { name: 'Social Media', value: 18 },
@@ -52,8 +52,8 @@ const paperData = {
     { name: 'Healthcare', value: 12 },
     { name: 'Industrial', value: 10 },
     { name: 'Scientific', value: 8 },
-    { name: 'Others', value: 7 }
-  ]
+    { name: 'Others', value: 7 },
+  ],
 };
 
 const Section = ({ title, icon: Icon, children, defaultOpen = false }) => {
@@ -189,7 +189,7 @@ const ExpandedPaperExplainer = () => {
             <LineChart width={600} height={250} data={paperData.qualityScores}>
               <CartesianGrid strokeDasharray="3 3" />
               <XAxis dataKey="category" />
-              <YAxis domain={[0, 10]} />
+              <YAxis domain={[0, 3]} />
               <Tooltip />
               <Legend />
               <Line type="monotone" dataKey="score" stroke="#8884d8" />
